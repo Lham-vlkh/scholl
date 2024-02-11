@@ -1,13 +1,13 @@
 ﻿@{
-    ViewData["Title"] = "School project";
+    ViewData["Title"] = "اضافه کردن اساتید";
+    ViewData["TSOstad"] = "اضافه کردن اساتید";
+    ViewData["TTCode"] = "کد ملی";
+    ViewData["TTMobile"] = "شماره تماس";
+    ViewData["TTTeach"] = "حوزه تدریس";
     ViewData["TSName"] = "نام";
     ViewData["TSFamily"] = "نام خانوادگی";
     ViewData["ok"] = "ثبت";
     ViewData["close"] = "بستن";
-    ViewData["TS"] = "اضافه کردن هنرآموز";
-    ViewData["TSAge"] = "سن";
-    ViewData["TSMobile"] = "شماره موبایل";
-    ViewData["TSEmail"] = "ایمیل";
     ViewData["Edit"] = "ویرایش";
     ViewData["Delete"] = "حذف";
     ViewData["operator"] = "عملیات";
@@ -15,15 +15,15 @@
 }
 <div class="text-center">
 
-    <button type="button" class="btn btn-primary fs-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        ثبت هنر جویان
+    <button type="button" class="btn btn-primary fs-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+        ثبت اساتید
     </button>
-    <!-- Modal student -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- modal teacher-->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-2" id="staticBackdropLabel">@ViewData["TS"]</h1>
+                    <h1 class="modal-title fs-2" id="staticBackdropLabel">@ViewData["TSOstad"]</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -37,15 +37,15 @@
                             <input type="text" class="form-control" id="validationTooltip02" required>
                         </div>
                         <div class="col-md-4 position-relative insideForm">
-                            <label for="validationTooltipUsername" class="form-label">@ViewData["TSAge"]:</label>
+                            <label for="validationTooltipUsername" class="form-label">@ViewData["TTCode"]:</label>
                             <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
                         </div>
                         <div class="col-md-6 position-relative insideForm">
-                            <label for="validationTooltip03" class="form-label">@ViewData["TSMobile"]:</label>
+                            <label for="validationTooltip03" class="form-label">@ViewData["TTMobile"]:</label>
                             <input type="text" class="form-control" id="validationTooltip03" required>
                         </div>
                         <div class="col-md-3 position-relative insideForm">
-                            <label for="validationTooltip05" class="form-label">@ViewData["TSEmail"]:</label>
+                            <label for="validationTooltip05" class="form-label">@ViewData["TTTeach"]:</label>
                             <input type="text" class="form-control" id="validationTooltip05" required>
 
                         </div>
@@ -53,29 +53,31 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary fs-3" data-bs-dismiss="modal">@ViewData["close"]</button>
-                    <a class="btn btn-secondary" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    <button type="button" href="google.com" class="btn btn-primary fs-3">@ViewData["ok"]</button>
+                    <button type="button" href="Index" class="btn btn-primary fs-3">@ViewData["ok"]</button>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- teacher data-->
     <div class=" table-responsive mt-5">
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">@ViewData["TSName"]</th>
                     <th scope="col">@ViewData["TSFamily"] </th>
-                    <th scope="col">@ViewData["TSAge"] </th>
-                    <th scope="col">@ViewData["TSMobile"] </th>
-                    <th scope="col">@ViewData["TSEmail"] </th>
+                    <th scope="col">@ViewData["TTCode"] </th>
+                    <th scope="col">@ViewData["TTMobile"] </th>
+                    <th scope="col">@ViewData["TTTeach"] </th>
                     <th scope="col">@ViewData["operator"] </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Title</td>
-                    <td>Des</td>
+                    <td>name</td>
+                    <td>family</td>
+                    <td>code meli</td>
+                    <td>mobile</td>
+                    <td>hozeh techer</td>
                     <td>
                         <a class="btn btn-primary btn-sm">@ViewData["Edit"]</a>
                         <a class="btn btn-danger btn-sm">@ViewData["Delete"]</a>
@@ -84,4 +86,6 @@
             </tbody>
         </table>
     </div>
+
 </div>
+
