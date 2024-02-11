@@ -20,15 +20,28 @@ html {
 
 body {
     margin-bottom: 60px;
+    background-color: #62B6B7 !important;
 }
 
 .insideForm {
     width: 100% !important;
     display: flex;
     justify-content: space-between;
-    gap:10px;
+    gap: 10px;
 }
 
 label {
     width: 18%;
+}
+
+.colorNav {
+    background-color: #2f7a78;
+}
+
+th {
+    background-color: #97DECE !important;
+}
+
+.table-striped tr:nth-child(even) {
+    --bs-table-bg: #CBEDD5 !important;
 }

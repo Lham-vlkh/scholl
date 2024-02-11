@@ -13,13 +13,16 @@
     ViewData["Edit"] = "ویرایش";
     ViewData["Delete"] = "حذف";
     ViewData["save"] = "ذخیره";
-
 }
+@using shcool.Models.Student;
+
+@model List<StudentInfo>;
 <div class="text-center">
 
     <button type="button" class="btn btn-primary fs-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         ثبت هنر جویان
     </button>
+
     <!-- Modal student -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -29,38 +32,37 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="d-flex flex-column row  g-3 needs-validation" novalidate method="post">
-                        <div class="col-md-4 position-relative insideForm">
-                            <label for="validationTooltip01" class="form-label">@ViewData["TSName"]:</label>
-                            <input type="text" class="form-control" id="validationTooltip01" required>
-                        </div>
-                        <div class="col-md-4 position-relative insideForm">
-                            <label for="validationTooltip02" class="form-label">@ViewData["TSFamily"]:</label>
-                            <input type="text" class="form-control" id="validationTooltip02" required>
-                        </div>
-                        <div class="col-md-4 position-relative insideForm">
-                            <label for="validationTooltipUsername" class="form-label">@ViewData["TSAge"]:</label>
-                            <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
-                        </div>
-                        <div class="col-md-6 position-relative insideForm">
-                            <label for="validationTooltip03" class="form-label">@ViewData["TSMobile"]:</label>
-                            <input type="text" class="form-control" id="validationTooltip03" required>
-                        </div>
-                        <div class="col-md-3 position-relative insideForm">
-                            <label for="validationTooltip05" class="form-label">@ViewData["TSEmail"]:</label>
-                            <input type="text" class="form-control" id="validationTooltip05" required>
+                    <form class="needs-validation" novalidate method="post">
+                        <div class="form-row  d-flex flex-column align-items-center  justify-content-between">
+                            <div class="col-md-4 position-relative  insideForm">
+                                <label for="validationTooltip01" class="form-label">@ViewData["TSName"]</label>
+                                <input type="text" name="name" class="form-control fs-3" id="validationTooltip01" required>
+                            </div>
+                            <div class="col-md-4 position-relative mt-1 insideForm">
+                                <label for="validationTooltip02" class="form-label">@ViewData["TSFamily"]</label>
+                                <input type="text" name="Family" class="form-control fs-3" id="validationTooltip02" required>
+                            </div>
+                            <div class="col-md-4 position-relative mt-1 insideForm">
+                                <label for="validationTooltipUsername" class="form-label">@ViewData["TSAge"]</label>
+                                <input type="tel" maxlength="2" name="Age" min="1" class="form-control fs-3" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+                            </div>
+                            <div class="col-md-6 position-relative mt-1 insideForm">
+                                <label for="validationTooltip03" class="form-label">@ViewData["TSMobile"]</label>
+                                <input type="tel" name="phone" maxlength="11" min="11" class="form-control fs-3" id="validationTooltip03" required>
+                            </div>
+                            <div class="col-md-3 position-relative mt-1 insideForm">
+                                <label for="validationTooltip04" class="form-label">@ViewData["TSEmail"]</label>
+                                <input type="email" class="form-control fs-3" name="Email" id="validationTooltip04">
 
+                            </div>
+                            <button class="btn btn-success mt-5 fs-3">@ViewData["ok"]</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary fs-3" data-bs-dismiss="modal">@ViewData["close"]</button>
-                    <button type="button" href="google.com" class="btn btn-primary fs-3">@ViewData["ok"]</button>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- show student-->
     <div class=" table-responsive mt-5">
         <table class="table">
             <thead>
@@ -73,15 +75,36 @@
                     <th scope="col">@ViewData["operator"] </th>
                 </tr>
             </thead>
+
             <tbody>
-                <tr>
-                    <td>Title</td>
-                    <td>Des</td>
-                    <td>
-                        <a data-bs-target="#exampleModal" data-bs-toggle="modal" class="btn btn-primary btn-sm">@ViewData["Edit"]</a>
-                        <a class="btn btn-danger btn-sm">@ViewData["Delete"]</a>
-                    </td>
-                </tr>
+                @if (Model.Count == 0)
+                {
+                    <tr>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>  </td>
+                        <td>اطلاعاتی یافت نشد</td>
+                        <td>  </td>
+                        <td>  </td>
+                    </tr>
+
+                }
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Family</td>
+                        <td>@item.Age</td>
+                        <td>@item.Phone </td>
+                        <td>@item.Email</td>
+                        <td>
+                            <button data-bs-target="#exampleModal" data-bs-toggle="modal" class="btn btn-primary btn-sm">@ViewData["Edit"]</button>
+                            <a href="/home/remove/@item.ID" class="btn btn-danger btn-sm">حذف</a>
+                        </td>
+                    </tr>
+
+                }
             </tbody>
         </table>
 
@@ -96,32 +119,38 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- vlaue pass nadadam-->
-                    <form class="d-flex flex-column row  g-3 needs-validation" novalidate method="post">
-                        <div class="col-md-4 position-relative insideForm">
-                            <label for="validationTooltip01" class="form-label">@ViewData["TSName"]:</label>
-                            <input type="text" class="form-control" id="validationTooltip01" required>
-                        </div>
-                        <div class="col-md-4 position-relative insideForm">
-                            <label for="validationTooltip02" class="form-label">@ViewData["TSFamily"]:</label>
-                            <input type="text" class="form-control" id="validationTooltip02" required>
-                        </div>
-                        <div class="col-md-4 position-relative insideForm">
-                            <label for="validationTooltipUsername" class="form-label">@ViewData["TSAge"]:</label>
-                            <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
-                        </div>
-                        <div class="col-md-6 position-relative insideForm">
-                            <label for="validationTooltip03" class="form-label">@ViewData["TSMobile"]:</label>
-                            <input type="text" class="form-control" id="validationTooltip03" required>
-                        </div>
-                        <div class="col-md-3 position-relative insideForm">
-                            <label for="validationTooltip05" class="form-label">@ViewData["TSEmail"]:</label>
-                            <input type="text" class="form-control" id="validationTooltip05" required>
+                    @foreach (var item in Model)
+                    {
+                        if (item.ID)
+                        {
 
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
+                            <form class="d-flex flex-column row  g-3 needs-validation" novalidate method="post" asp-route-id="@item.ID">
+                                <div class="col-md-4 position-relative insideForm">
+                                    <label for="validationTooltip01" class="form-label">@ViewData["TSName"]</label>
+                                    <input type="text" value="@item.Name" class="form-control ts-3" id="validationTooltip01" required>
+                                </div>
+                                <div class="col-md-4 position-relative insideForm">
+                                    <label for="validationTooltip02" class="form-label">@ViewData["TSFamily"]</label>
+                                    <input type="text" value="@item.Family" class="form-control ts-3" id="validationTooltip02" required>
+                                </div>
+                                <div class="col-md-4 position-relative insideForm">
+                                    <label for="validationTooltipUsername" class="form-label">@ViewData["TSAge"]</label>
+                                    <input type="tel" value="@item.Age" maxlength="2" min="1" class="ts-3 form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+                                </div>
+                                <div class="col-md-6 position-relative insideForm">
+                                    <label for="validationTooltip03" class="form-label">@ViewData["TSMobile"]</label>
+                                    <input type="tel" value="@item.Phone" maxlength="11" min="11" class="ts-3 form-control" id="validationTooltip03" required>
+                                </div>
+                                <div class="col-md-3 position-relative insideForm">
+                                    <label for="validationTooltip05" class="form-label">@ViewData["TSEmail"]:</label>
+                                    <input type="email" value="@item.Email" class="form-control ts-3" id="validationTooltip05">
+
+                                </div>
+
+                            </form>
+                        }
+                    }
+
                     <button type="button" class="btn btn-primary">@ViewData["save"]</button>
                 </div>
             </div>

@@ -60,8 +60,8 @@
         </div>
     </div>
     <!-- teacher data-->
-    <div class=" table-responsive mt-5">
-        <table class="table">
+    <div class="table-responsive mt-5">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">@ViewData["TSName"]</th>
@@ -73,6 +73,17 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>name</td>
+                    <td>family</td>
+                    <td>code meli</td>
+                    <td>mobile</td>
+                    <td>hozeh techer</td>
+                    <td>
+                        <a data-bs-target="#exampleModal" data-bs-toggle="modal" class="btn btn-primary btn-sm">@ViewData["Edit"]</a>
+                        <a class="btn btn-danger btn-sm">@ViewData["Delete"]</a>
+                    </td>
+                </tr>
                 <tr>
                     <td>name</td>
                     <td>family</td>
