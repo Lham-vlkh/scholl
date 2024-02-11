@@ -121,8 +121,7 @@
                 <div class="modal-body">
                     @foreach (var item in Model)
                     {
-                        if (item.ID)
-                        {
+                      
 
                             <form class="d-flex flex-column row  g-3 needs-validation" novalidate method="post" asp-route-id="@item.ID">
                                 <div class="col-md-4 position-relative insideForm">
@@ -148,7 +147,6 @@
                                 </div>
 
                             </form>
-                        }
                     }
 
                     <button type="button" class="btn btn-primary">@ViewData["save"]</button>

@@ -7,6 +7,8 @@ using System.Diagnostics;
 
 namespace sholl.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class HomeController : Controller
     {
         private IStudent _StudentRepository;
@@ -73,6 +75,25 @@ namespace sholl.Controllers
         public IActionResult Teacher()
         {
             return View();
+        }
+
+
+
+
+        public IActionResult Create()
+        {
+            var viewModel = new GetTwoModel();
+            {
+                StudentInfo student = new StudentInfo();
+                StudentInfo ListStudent = new StudentInfo();
+        //{
+        //    new EmergencyInfo(),
+        //    new EmergencyInfo(),
+        //    new EmergencyInfo()
+        //}
+            };
+
+            return View(viewModel);
         }
 
     }
