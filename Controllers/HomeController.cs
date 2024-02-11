@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using shcool.Models;
 using shcool.Models.Student;
 using shcool.Repositories.Implimention;
 using shcool.Repositories.Interfaces;
@@ -79,22 +81,17 @@ namespace sholl.Controllers
 
 
 
-
+        //using tow model
         public IActionResult Create()
         {
-            var viewModel = new GetTwoModel();
+            var viewModel = new GetTowModels();
             {
                 StudentInfo student = new StudentInfo();
-                StudentInfo ListStudent = new StudentInfo();
-        //{
-        //    new EmergencyInfo(),
-        //    new EmergencyInfo(),
-        //    new EmergencyInfo()
-        //}
-            };
+                StudentInfo studentList = new StudentInfo();
+
+            }
 
             return View(viewModel);
         }
-
     }
 }

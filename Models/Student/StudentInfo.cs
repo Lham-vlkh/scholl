@@ -10,9 +10,4 @@ namespace shcool.Models.Student
         public string Email { get; set; }
 
     }
-    public class GetTwoModel
-    {
-        public StudentInfo List { get; set; }
-        public List<StudentInfo> StudentInfo { get; set; }
-    }
 }
