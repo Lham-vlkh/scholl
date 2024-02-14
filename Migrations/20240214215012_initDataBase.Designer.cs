@@ -11,8 +11,8 @@ using shcool.Context;
 namespace shcool.Migrations
 {
     [DbContext(typeof(Database))]
-    [Migration("20240211172926_initdatabase")]
-    partial class initdatabase
+    [Migration("20240214215012_initDataBase")]
+    partial class initDataBase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,39 @@ namespace shcool.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("shcool.Models.Teacher.TeacherInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Family")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Htadris")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Melicode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teachers");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["TTCode"] = "کد ملی";
+    ViewData["TTMobile"] = "شماره تماس";
+    ViewData["TTTeach"] = "حوزه تدریس";
+    ViewData["TSName"] = "نام";
+    ViewData["TSFamily"] = "نام خانوادگی";
+    ViewData["TS"] = "ویرایش استاد";
+    ViewData["Edit"] = " ویرایش استاد";
+
+}
+
+
+@using shcool.Models.Teacher
+@model TeacherInfo;
+<div class="container">
+    <form class="d-flex flex-column row align-items-center g-3 needs-validation"  novalidate method="post">
+        <div class="col-md-4 position-relative insideForm">
+            <input type="text" asp-for="Id" hidden>
+            <label for="validationTooltip01" class="form-label">@ViewData["TSName"]:</label>
+            <input type="text" asp-for="Name" class="form-control mt-2 fs-3" id="validationTooltip01" required>
+        </div>
+        <div class="col-md-4 position-relative insideForm">
+            <label for="validationTooltip02" class="form-label">@ViewData["TSFamily"]:</label>
+            <input type="text" asp-for="Family" class="form-control mt-2 fs-3" id="validationTooltip02" required>
+        </div>
+        <div class="col-md-4 position-relative insideForm">
+            <label for="validationTooltipUsername" class="form-label">@ViewData["TTCode"]:</label>
+            <input type="text" asp-for=Melicode class="form-control mt-2 fs-3" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+        </div>
+        <div class="col-md-6 position-relative insideForm">
+            <label for="validationTooltip03" class="form-label">@ViewData["TTMobile"]:</label>
+            <input type="text" asp-for="Phone" class="form-control mt-2 fs-3" id="validationTooltip03" required>
+        </div>
+        <div class="col-md-3 position-relative insideForm">
+            <label for="validationTooltip05" class="form-label">@ViewData["TTTeach"]:</label>
+            <input type="text" asp-for="Htadris" class="form-control mt-2 fs-3" id="validationTooltip05" required>
+
+        </div>
+        <button class="btn btn-primary mt-2 w-25">@ViewData["Edit"]</button>
+
+    </form>
+</div>

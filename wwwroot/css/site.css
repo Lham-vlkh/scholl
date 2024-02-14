@@ -45,3 +45,7 @@ th {
 .table-striped tr:nth-child(even) {
     --bs-table-bg: #CBEDD5 !important;
 }
+
+input {
+    text-align: right;
+}

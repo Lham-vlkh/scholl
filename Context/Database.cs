@@ -8,6 +8,8 @@ namespace shcool.Context
     {
 
         public DbSet<StudentInfo> Students { get; set; }
+        public DbSet<TeacherInfo> Teachers { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -16,7 +18,8 @@ namespace shcool.Context
             base.OnConfiguring(optionsBuilder);
             #endregion
             #region teacherDB
-   
+            optionsBuilder.UseSqlServer("Server=ELIKA\\SQLSERVER2022;Database=Teachers_DB;Trusted_Connection=true;TrustServerCertificate=true;");
+            base.OnConfiguring(optionsBuilder);
             #endregion
         }
 

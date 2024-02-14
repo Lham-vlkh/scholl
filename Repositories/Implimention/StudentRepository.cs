@@ -41,12 +41,14 @@ namespace shcool.Repositories.Implimention
             return _context.Students.ToList();
         }
 
-        public StudentInfo GetStudentID(int id) => _context.Students.FirstOrDefault(e => e.ID == id);
+        public StudentInfo GetStudentID(int id)
+        {
+            return _context.Students.FirstOrDefault(e => e.ID == id);
+        }
 
         public bool UpdateStudent(int id, string name, string family, int age, string phone, string email)
         {
             StudentInfo update = GetStudentID(id);
-
             update.Name = name;
             update.Family = family;
             update.Age = age;

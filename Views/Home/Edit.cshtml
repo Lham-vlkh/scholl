@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Edit"] = "ویرایش";
+    ViewData["Delete"] = "حذف";
+    ViewData["save"] = "ذخیره";
+    ViewData["TSEdit"] = "ویرایش هنرآموز";
+    ViewData["TSName"] = "نام ";
+    ViewData["TSFamily"] = " نام خانوادگی";
+    ViewData["TSAge"] = "سن ";
+    ViewData["TSMobile"] = " شماره تماس";
+    ViewData["TSEmail"] = " ایمیل";
+}
+
+
+
+
+@using shcool.Models.Student;
+@model StudentInfo;
+<div class="container">
+    <form class="d-flex flex-column row mt-5 align-items-center needs-validation" action="/home/Edit" novalidate method="post">
+        <div class="col-md-4 position-relative insideForm">
+            <input type="text" asp-for="ID" hidden>
+
+            <label for="validationTooltip01" class="form-label">@ViewData["TSName"]</label>
+            <input type="text" asp-for="Name" class="form-control mt-2 fs-3" id="validationTooltip01" required>
+        </div>
+        <div class="col-md-4 position-relative insideForm">
+            <label for="validationTooltip02" class="form-label">@ViewData["TSFamily"]</label>
+            <input type="text" asp-for="Family" class="form-control mt-2 fs-3" id="validationTooltip02" required>
+        </div>
+        <div class="col-md-4 position-relative insideForm">
+            <label for="validationTooltipUsername" class="form-label">@ViewData["TSAge"]</label>
+            <input type="tel" asp-for="Age" maxlength="2" min="1" class="form-control mt-2 fs-3" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
+        </div>
+        <div class="col-md-6 position-relative insideForm">
+            <label for="validationTooltip03" class="form-label">@ViewData["TSMobile"]</label>
+            <input type="tel" asp-for="Phone" maxlength="11" min="11" class="form-control mt-2 fs-3 " id="validationTooltip03" required>
+        </div>
+        <div class="col-md-3 position-relative insideForm">
+            <label for="validationTooltip05" class="form-label">@ViewData["TSEmail"]:</label>
+            <input type="email" asp-for="Email" class="form-control mt-2 fs-3" id="validationTooltip05">
+
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2 w-25">@ViewData["save"]</button>
+    </form>
+</div> 
