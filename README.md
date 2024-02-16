@@ -14,3 +14,8 @@ Fonts
 -----------------------------------
 #Install  AShekari font  to get best view 
 -----------------------------------
+for download  this font please contact me on Telegram 
+
+@sefidi_programmer
+
+ty for see 

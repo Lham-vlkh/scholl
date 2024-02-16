@@ -1,16 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using shcool.Models;
 using shcool.Models.Student;
 using shcool.Repositories.Implimention;
 using shcool.Repositories.Interfaces;
-using sholl.Models;
-using System.Diagnostics;
 
 namespace sholl.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
     public class HomeController : Controller
     {
         private IStudent _StudentRepository;
@@ -22,7 +17,9 @@ namespace sholl.Controllers
 
         public IActionResult Index()
         {
+          
             List<StudentInfo> showList = _StudentRepository.GetStudentAsync();
+
             return View(showList);
         }
 
@@ -44,12 +41,19 @@ namespace sholl.Controllers
         public IActionResult Edit(int id)
         {
             StudentInfo update = _StudentRepository.GetStudentID(id);
+          if(update != null)
+            {
+
             return View(update);
+            }
+            return RedirectToAction("Index");
+
         }
         [HttpPost]
         public IActionResult Edit(int id, string name, string family, int age, string phone, string email)
         {
             var result = _StudentRepository.UpdateStudent(id, name, family, age, phone, email);
+
             if (result)
             {
                 return RedirectToAction("Index");
@@ -58,7 +62,6 @@ namespace sholl.Controllers
             {
                 StudentInfo update = new StudentInfo()
                 {
-                    ID = id,
                     Name = name,
                     Family = family,
                     Age = age,
@@ -79,19 +82,5 @@ namespace sholl.Controllers
             return View();
         }
 
-
-
-        //using tow model
-        public IActionResult Create()
-        {
-            var viewModel = new GetTowModels();
-            {
-                StudentInfo student = new StudentInfo();
-                StudentInfo studentList = new StudentInfo();
-
-            }
-
-            return View(viewModel);
-        }
     }
 }
